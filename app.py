@@ -8,7 +8,7 @@ from nltk.tokenize import word_tokenize
 # from dotenv import load_dotenv
 
 # Download necessary NLTK data
-nltk.download('punkt')
+nltk.download('punkt_tab')
 nltk.download('stopwords')
 
 # Load environment variables
