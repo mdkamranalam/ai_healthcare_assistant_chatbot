@@ -1,17 +1,17 @@
-import os
+# import os # Comment out if you want to use .env
 import streamlit as st
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain import PromptTemplate, LLMChain
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-# from dotenv import load_dotenv
+# from dotenv import load_dotenv # Comment out if you want to use .env
 
 # Download necessary NLTK data
 nltk.download('punkt_tab')
 nltk.download('stopwords')
 
-# Load environment variables
+# Load environment variables (Comment out if you want to use .env)
 # load_dotenv()
 # sec_key = os.getenv("HUGGINGFACE_TOKEN")
 
@@ -46,12 +46,15 @@ def healthcare_chatbot(user_input):
     
     # Define the prompt template
     template = """
-    Use the pieces of information provided in the context to answer user's question.
-    If you don't know the answer, just say that you don't know, don't try to make up an answer.
-    Don't provide anything out of the context.
     Only generate answer related to healthcare, medication, lifestyle recommendation.
+    Format for generating answers make sure it is in bullet points and it is generated only in st.write:
+    - **Answer**: generate answer related to healthcare only\n
+    - **Symptoms**\n
+    - **Medication**\n
+    - **Lifestyle recommendation**
+    
     Question: {question}
-    Start the answer directly. No small talk please.
+    Start the answer directly. No small talk and no other questions that are not related to healthcare and medication please.
     """
     prompt = PromptTemplate(template=template, input_variables=['question'])
     
@@ -71,7 +74,7 @@ def main():
             with st.spinner("Processing, please wait..."):
                 try:
                     response = healthcare_chatbot(user_input)
-                    st.write("Chatbot: ", response.strip())
+                    st.write("Healthcare Assistant:\n", response.strip())
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
         else:

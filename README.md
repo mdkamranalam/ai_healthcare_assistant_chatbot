@@ -16,7 +16,7 @@ Provide step-by-step instructions on how to set up and run the project.
 
 **Clone the repository**
 ```bash
-git clone 
+git clone https://github.com/mdkamranalam/ai_healthcare_assistant_chatbot.git
 ```
 **Open project directory**
 ```bash
@@ -36,9 +36,29 @@ pip install -r requirements.txt
 ```
 
 If you want to deactivate environment:\
-**Dactivate virtual environment**
+**Deactivate virtual environment**
 ```bash
 conda deactivate
+```
+
+## How to use huggingface tokens?
+There are 2 methods:
+
+**METHOD 1: By making <mark>.toml</mark> file for streamlit**
+- Step 1: Create folder name <mark>.streamlit</mark> in the project directory.
+- Step 2: Then create file name <mark>secrets.toml</mark> in the <mark>.streamlit</mark> directory.
+- Step 3: Now, add your Huggingface token
+```toml
+HUGGINGFACE_TOKEN="YOUR HUGGINGFACE TOKEN HERE"
+```
+
+or,
+**METHOD 2: By using <mark>.env</mark> file**
+- Step 1: Create file name <mark>.env</mark> in the project directory.
+- Step 2: Then make sure you comment out code that is necessary to access <mark>.env</mark> in <mark>app.py</mark>.
+- Step 3: Now, add your Huggingface token
+```env
+HUGGINGFACE_TOKEN="YOUR HUGGINGFACE TOKEN HERE"
 ```
 
 ## Usage
